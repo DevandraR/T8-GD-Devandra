@@ -18,13 +18,16 @@ func get_input():
 	if Input.is_action_pressed('right'):
 		velocity.x += speed
 		if is_on_floor():
-			particle.set_emitting(true)
+			if particle:
+				particle.set_emitting(true)
 	elif Input.is_action_pressed('left'):
 		velocity.x -= speed
 		if is_on_floor():
-			particle.set_emitting(true)
+			if particle:
+				particle.set_emitting(true)
 	else:
-		particle.set_emitting(false)
+		if particle:
+			particle.set_emitting(false)
 
 func _physics_process(delta):
 	velocity.y += delta * GRAVITY
